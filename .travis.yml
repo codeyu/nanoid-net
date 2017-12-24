@@ -1,0 +1,28 @@
+language: csharp
+solution: nanoid-net.sln
+matrix:
+  include:
+    - os: osx
+      osx_image: xcode9.2
+      dotnet: 2.1.2
+      mono: none
+    - os: linux
+      dist: trusty
+      sudo: required
+      dotnet: 2.1.2
+      mono: none
+
+branches:
+  only:
+    - master
+before_script:
+  - |
+    set -e
+    if [ "$TRAVIS_OS_NAME" = "osx" ]; then
+        ulimit -n 1024
+    fi
+    dotnet restore
+script:
+  - dotnet build "src\Nanoid"
+  - dotnet build "test\Nanoid.Test" -c Release
+  - dotnet test "test\Nanoid.Test\Nanoid.Test.csproj" --configuration Release --no-build

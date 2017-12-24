@@ -1,7 +1,34 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
+ <PropertyGroup>
+    <Version>1.0.0</Version>
+    <authors>codeyu</authors>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Nanoid</AssemblyName>
+    <PackageId>Nanoid</PackageId>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
+    <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
+    <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
+    <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
+    <GenerateAssemblyInformationalVersionAttribute>false</GenerateAssemblyInformationalVersionAttribute>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Copyright>Copyright 2017 © codeyu</Copyright>
+    <title>.NET Nanoid</title>
+    <owners>codeyu</owners>
+    <Description>A tiny, secure, URL-friendly, unique string ID generator for .NET Core.</Description>
+    <PackageTags>Nanoid UUID</PackageTags>
+    <PackageReleaseNotes>
+      1.0.0
+      - Initial public release
+    </PackageReleaseNotes>
+    <PackageLicenseUrl>https://github.com/codeyu/nanoid-net/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/codeyu/nanoid-net</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/codeyu/nanoid-net</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
-
 </Project>

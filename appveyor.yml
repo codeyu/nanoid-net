@@ -1,0 +1,22 @@
+version: '{build}'
+pull_requests:
+  do_not_increment_build_number: true
+image: Visual Studio 2017
+nuget:
+  disable_publish_on_pr: true
+build_script:
+- dotnet build Nanoid.sln -c Release -v q /nologo
+- dotnet pack src/Nanoid/Nanoid.csproj -c Release -o /artifacts --include-symbols --no-build
+test_script:
+- dotnet test test/Nanoid.Test/Nanoid.Test.csproj --configuration Release  --no-build
+
+artifacts:
+- path: .\src\Nanoid\artifacts\**\*.nupkg
+  name: NuGet
+deploy:
+- provider: NuGet
+  name: production
+  api_key:
+    secure: Wrq+QibneTq9Rvutd75Y7Hvf+UcJ3K/RA/cl1Eb4ViymauThEu1/g22002Bx4MHn
+  on:
+    appveyor_repo_tag: true
