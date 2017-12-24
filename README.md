@@ -1,7 +1,7 @@
 # nanoid-net
 [![Build Status](https://travis-ci.org/codeyu/nanoid-net.svg?branch=master)](https://travis-ci.org/codeyu/nanoid-net) [![Build status](https://ci.appveyor.com/api/projects/status/i1ni7r193fs4t9tq/branch/master?svg=true)](https://ci.appveyor.com/project/codeyu/nanoid-net/branch/master)
 [![NuGet Badge](https://buildstats.info/nuget/Nanoid)](https://www.nuget.org/packages/Nanoid/) 
-[![License](https://img.shields.io/badge/license-MIT%20License-blue.svg)](https://github.com/codeyu/nanoid-net/LICENSE)
+[![License](https://img.shields.io/badge/license-MIT%20License-blue.svg)](LICENSE)
 
 This package is .NET implementation of [ai's](https://github.com/ai) [nanoid](https://github.com/ai/nanoid)!
 
@@ -70,4 +70,4 @@ var id = Nanoid.Generate(random, "abcdef", 10) //=> "fbaefaadeb"
 
 ## License
 
-The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+The MIT License (MIT). Please see [License File](LICENSE) for more information.
