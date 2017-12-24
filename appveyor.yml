@@ -5,7 +5,7 @@ image: Visual Studio 2017
 nuget:
   disable_publish_on_pr: true
 build_script:
-- dotnet build Nanoid.sln -c Release -v q /nologo
+- dotnet build nanoid-net.sln -c Release -v q /nologo
 - dotnet pack src/Nanoid/Nanoid.csproj -c Release -o /artifacts --include-symbols --no-build
 test_script:
 - dotnet test test/Nanoid.Test/Nanoid.Test.csproj --configuration Release  --no-build
