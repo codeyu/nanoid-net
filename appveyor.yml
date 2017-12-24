@@ -11,7 +11,7 @@ test_script:
 - dotnet test test/Nanoid.Test/Nanoid.Test.csproj --configuration Release  --no-build
 
 artifacts:
-- path: .\artifacts\*.nupkg
+- path: .\src\Nanoid\artifacts\**\*.nupkg
   name: NuGet
 deploy:
 - provider: NuGet
