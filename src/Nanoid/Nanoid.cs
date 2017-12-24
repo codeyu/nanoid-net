@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace Nanoid
 {
     public static class Nanoid
     {
-        private static readonly Random random = new Random();
+        private static readonly CryptoRandom random = new CryptoRandom();
         public static String Generate(string alphabet="_~0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", int size=21)
         {
             return Generate(random, alphabet, size);
