@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Text;
-
+using System.Threading.Tasks;
 namespace Nanoid
 {
     /// <summary>
@@ -8,6 +8,7 @@ namespace Nanoid
     /// </summary>
     public static class Nanoid
     {
+        private const string DefaultAlphabet = "_-0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
         private static readonly CryptoRandom Random = new CryptoRandom();
         /// <summary>
         /// 
@@ -15,10 +16,15 @@ namespace Nanoid
         /// <param name="alphabet"></param>
         /// <param name="size"></param>
         /// <returns></returns>
-        public static string Generate(string alphabet="_~0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", int size=21)
-        {
-            return Generate(Random, alphabet, size);
-        }
+        public static async Task<string> GenerateAsync(string alphabet = DefaultAlphabet, int size = 21) => await Task.Run(() => Generate(Random, alphabet, size));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="alphabet"></param>
+        /// <param name="size"></param>
+        /// <returns></returns>
+        public static string Generate(string alphabet= DefaultAlphabet, int size=21) => Generate(Random, alphabet, size);
+
         /// <summary>
         /// 
         /// </summary>
@@ -28,7 +34,7 @@ namespace Nanoid
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
-        public static string Generate(Random random, string alphabet="_~0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", int size=21)
+        public static string Generate(Random random, string alphabet= DefaultAlphabet, int size=21)
         {
 
             if (random == null)

@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using Xunit;
 using Nanoid;
 namespace Nanoid.Test
@@ -37,6 +38,15 @@ namespace Nanoid.Test
         {
             var random = new Random(10);
             var result = Nanoid.Generate(random);
+            Assert.Equal(21, result.Length);
+        }
+
+        [Fact]
+        public async Task TestAsyncGenerate()
+        {
+        
+            var result = await Nanoid.GenerateAsync();
+        
             Assert.Equal(21, result.Length);
         }
     }
