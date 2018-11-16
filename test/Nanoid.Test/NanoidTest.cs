@@ -62,9 +62,10 @@ namespace Nanoid.Test
             {
                 var result = Nanoid.Generate();
                 Assert.Equal(DefaultSize, result.Length);
+                
                 foreach(var c in result)
                 {
-                    Assert.True(DefaultAlphabet.Contains(c));
+                    Assert.Contains(c, result);
                 }
             }
         }
