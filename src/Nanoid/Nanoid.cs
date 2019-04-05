@@ -60,12 +60,13 @@ namespace Nanoid
             var mask = (2 << (int)Math.Floor(Math.Log(alphabet.Length - 1) / Math.Log(2))) - 1;
             var step = (int)Math.Ceiling(1.6 * mask * size / alphabet.Length);
 
-            var idBuilder = new StringBuilder();
+            var idBuilder = new char[size];
+            int cnt = 0;
 
+            var bytes = new byte[step];
             while (true)
             {
 
-                var bytes = new byte[step];
                 random.NextBytes(bytes);
 
                 for (var i = 0; i < step; i++)
@@ -74,10 +75,10 @@ namespace Nanoid
                     var alphabetIndex = bytes[i] & mask;
 
                     if (alphabetIndex >= alphabet.Length) continue;
-                    idBuilder.Append(alphabet[alphabetIndex]);
-                    if (idBuilder.Length == size)
+                    idBuilder[cnt] = alphabet[alphabetIndex];
+                    if (++cnt == size)
                     {
-                        return idBuilder.ToString();
+                        return new string(idBuilder);
                     }
 
                 }
