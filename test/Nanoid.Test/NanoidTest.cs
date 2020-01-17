@@ -47,6 +47,26 @@ namespace Nanoid.Test
         }
 
         [Fact]
+        public void TestSingleLetterAlphabet()
+        {
+            var actual = Nanoid.Generate("a", 5);
+
+            Assert.Equal("aaaaa", actual);
+        }
+
+        [Theory]
+        [InlineData(4, "adca")]
+        [InlineData(18, "cbadcbadcbadcbadcc")]
+        public void TestPredefinedRandomSequence(int size, string expected)
+        {
+            byte[] sequence = { 2, 255, 3, 7, 7, 7, 7, 7, 0, 1 };
+            var random = new PredefinedRandomSequence(sequence);
+            var actual = Nanoid.Generate(random, "abcde", size);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
         public async Task TestAsyncGenerate()
         {
         
