@@ -61,6 +61,9 @@ namespace Nanoid
                 throw new ArgumentOutOfRangeException("size must be greater than zero.");
             }
 
+            // See https://github.com/ai/nanoid/blob/master/format.js for
+            // explanation why masking is use (`random % alphabet` is a common
+            // mistake security-wise).
             var mask = (2 << 31 - Clz32((alphabet.Length - 1) | 1)) - 1;
             var step = (int)Math.Ceiling(1.6 * mask * size / alphabet.Length);
 
