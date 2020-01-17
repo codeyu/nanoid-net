@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 namespace Nanoid
@@ -60,10 +61,16 @@ namespace Nanoid
             var mask = (2 << (int)Math.Floor(Math.Log(alphabet.Length - 1) / Math.Log(2))) - 1;
             var step = (int)Math.Ceiling(1.6 * mask * size / alphabet.Length);
 
+#if NETSTANDARD2_1
+            Span<char> idBuilder = stackalloc char[size];
+            Span<byte> bytes = stackalloc byte[step];
+#else
             var idBuilder = new char[size];
+            var bytes = new byte[step];
+#endif
+
             int cnt = 0;
 
-            var bytes = new byte[step];
             while (true)
             {
 
