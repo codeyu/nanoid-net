@@ -111,6 +111,17 @@ namespace Nanoid.Test
             }
         }
 
+        [Fact]
+        public void TestMask()
+        {
+            for (var length = 1; length < 256; length++)
+            {
+                var mask1 = (2 << (int)Math.Floor(Math.Log(length - 1) / Math.Log(2))) - 1;
+                var mask2 = (2 << 31 - Nanoid.Clz32((length - 1) | 1)) - 1;
+                Assert.Equal(mask1, mask2);
+            }
+        }
+
         private static bool ToBeCloseTo(double actual, double expected, int precision = 2)
         {
             var pass = Math.Abs(expected-actual) < Math.Pow(10, -precision)/2;
