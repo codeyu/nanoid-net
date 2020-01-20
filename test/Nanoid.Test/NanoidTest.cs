@@ -47,6 +47,26 @@ namespace Nanoid.Test
         }
 
         [Fact]
+        public void TestSingleLetterAlphabet()
+        {
+            var actual = Nanoid.Generate("a", 5);
+
+            Assert.Equal("aaaaa", actual);
+        }
+
+        [Theory]
+        [InlineData(4, "adca")]
+        [InlineData(18, "cbadcbadcbadcbadcc")]
+        public void TestPredefinedRandomSequence(int size, string expected)
+        {
+            byte[] sequence = { 2, 255, 3, 7, 7, 7, 7, 7, 0, 1 };
+            var random = new PredefinedRandomSequence(sequence);
+            var actual = Nanoid.Generate(random, "abcde", size);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
         public async Task TestAsyncGenerate()
         {
         
@@ -108,6 +128,17 @@ namespace Nanoid.Test
             {
                 var distribution = c.Value * DefaultAlphabet.Length / (double)(count * DefaultSize);
                 Assert.True(ToBeCloseTo(distribution, 1, 1));
+            }
+        }
+
+        [Fact]
+        public void TestMask()
+        {
+            for (var length = 1; length < 256; length++)
+            {
+                var mask1 = (2 << (int)Math.Floor(Math.Log(length - 1) / Math.Log(2))) - 1;
+                var mask2 = (2 << 31 - Nanoid.Clz32((length - 1) | 1)) - 1;
+                Assert.Equal(mask1, mask2);
             }
         }
 
