@@ -7,7 +7,7 @@ This package is .NET implementation of [ai's](https://github.com/ai) [nanoid](ht
 
 **Safe.** It uses cryptographically strong random generator.
 
-**Compact.** It uses more symbols than UUID (`A-Za-z0-9_~`)
+**Compact.** It uses more symbols than UUID (`A-Za-z0-9_-`)
 and has the same number of unique options in just 22 symbols instead of 36.
 
 **Fast.** Nanoid is as fast as UUID but can be used in URLs.
@@ -24,11 +24,11 @@ PM> Install-Package Nanoid
 
 ### Normal
 
-The default method uses URL-friendly symbols (`A-Za-z0-9_~`) and returns an ID
+The default method uses URL-friendly symbols (`A-Za-z0-9_-`) and returns an ID
 with 21 characters (to have a collision probability similar to UUID v4).
 
 ```cs
-var id = Nanoid.Generate() //=> "Uakgb_J5m9g~0JDMbcJqLJ"
+var id = Nanoid.Generate() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
 ```
 
 Symbols `-,.()` are not encoded in the URL. If used at the end of a link
@@ -38,7 +38,7 @@ If you want to reduce ID length (and increase collisions probability),
 you can pass the size as an argument:
 
 ```cs
-var id = Nanoid.Generate(size:10) //=> "IRFa~VaY2b"
+var id = Nanoid.Generate(size:10) //=> "IRFa-VaY2b"
 ```
 
 ### Custom Alphabet or Length
