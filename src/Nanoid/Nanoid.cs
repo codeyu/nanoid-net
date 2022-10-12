@@ -20,14 +20,23 @@ namespace Nanoid
         /// <param name="alphabet"></param>
         /// <param name="size"></param>
         /// <returns></returns>
-        public static async Task<string> GenerateAsync(string alphabet = DefaultAlphabet, int size = 21) => await Task.Run(() => Generate(Random, alphabet, size));
+        public static async Task<string> GenerateAsync(string alphabet = DefaultAlphabet, int size = 21)
+        {
+            Validate(alphabet, size);
+            return await Task.Run(() => GenerateId(Random, alphabet, size));
+        }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="alphabet"></param>
         /// <param name="size"></param>
         /// <returns></returns>
-        public static string Generate(string alphabet= DefaultAlphabet, int size=21) => Generate(Random, alphabet, size);
+        public static string Generate(string alphabet = DefaultAlphabet, int size = 21)
+        {
+            Validate(alphabet, size);
+            return GenerateId(Random, alphabet, size);
+        }
 
         /// <summary>
         /// 
@@ -38,10 +47,15 @@ namespace Nanoid
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
-        public static string Generate(Random random, string alphabet= DefaultAlphabet, int size=21)
+        public static string Generate(Random random, string alphabet = DefaultAlphabet, int size = 21)
         {
+            Validate(alphabet, size);
+            return GenerateId(random, alphabet, size);
+        }
 
-            if (random == null)
+        private static void Validate(string alphabet, int size)
+        {
+            if (Random == null)
             {
                 throw new ArgumentNullException("random cannot be null.");
             }
@@ -60,7 +74,10 @@ namespace Nanoid
             {
                 throw new ArgumentOutOfRangeException("size must be greater than zero.");
             }
+        }
 
+        private static string GenerateId(Random random, string alphabet = DefaultAlphabet, int size = 21)
+        {
             // See https://github.com/ai/nanoid/blob/master/format.js for
             // explanation why masking is use (`random % alphabet` is a common
             // mistake security-wise).
