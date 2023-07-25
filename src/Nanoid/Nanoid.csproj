@@ -6,7 +6,7 @@
     <TargetFrameworks>$(TargetFrameworks);net45</TargetFrameworks>
   </PropertyGroup>
   <PropertyGroup>
-    <Version>2.2.0</Version>
+    <Version>3.0.0</Version>
     <authors>codeyu</authors>
     <AssemblyName>Nanoid</AssemblyName>
     <PackageId>Nanoid</PackageId>
