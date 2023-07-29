@@ -1,6 +1,6 @@
 using System;
 using System.Security.Cryptography;
-namespace Nanoid
+namespace NanoidDotNet
 {
     /// <inheritdoc />
     /// <summary>

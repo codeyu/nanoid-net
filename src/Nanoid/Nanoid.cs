@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 [assembly:InternalsVisibleTo("Nanoid.Test")]
 
-namespace Nanoid
+namespace NanoidDotNet
 {
     /// <summary>
     /// 
