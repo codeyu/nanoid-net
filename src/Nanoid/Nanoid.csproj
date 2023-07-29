@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net7.0</TargetFrameworks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(OS)' == 'Windows_NT' ">
     <TargetFrameworks>$(TargetFrameworks);net45</TargetFrameworks>
@@ -27,8 +27,9 @@
     <Description>A tiny, secure, URL-friendly, unique string ID generator for .NET Core.</Description>
     <PackageTags>Nanoid UUID</PackageTags>
     <PackageReleaseNotes>
-      2.1.0
-      - perfomance improve. by @plaptov and @shadow-cs.
+      3.0.0
+      - Disruptive change: Change namespace to NanoidDotNet. by @trobinpl
+      - Optimize GenerateAsync. by @bgilner
     </PackageReleaseNotes>
     <PackageLicense>https://github.com/codeyu/nanoid-net/master/LICENSE</PackageLicense>
     <PackageProjectUrl>https://github.com/codeyu/nanoid-net</PackageProjectUrl>
