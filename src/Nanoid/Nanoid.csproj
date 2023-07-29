@@ -35,5 +35,8 @@
     <PackageProjectUrl>https://github.com/codeyu/nanoid-net</PackageProjectUrl>
     <RepositoryUrl>https://github.com/codeyu/nanoid-net</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 </Project>
