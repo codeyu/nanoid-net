@@ -68,9 +68,9 @@ namespace NanoidDotNet.Test
         [Fact]
         public async Task TestAsyncGenerate()
         {
-        
+
             var result = await Nanoid.GenerateAsync();
-        
+
             Assert.Equal(DefaultSize, result.Length);
         }
 
@@ -81,7 +81,7 @@ namespace NanoidDotNet.Test
             {
                 var result = Nanoid.Generate();
                 Assert.Equal(DefaultSize, result.Length);
-                
+
                 foreach(var c in result)
                 {
                     Assert.Contains(c, result);
@@ -120,7 +120,7 @@ namespace NanoidDotNet.Test
 
                     chars[c] += 1;
                 }
-                
+
             }
 
             foreach (var c in chars)
@@ -136,7 +136,11 @@ namespace NanoidDotNet.Test
             for (var length = 1; length < 256; length++)
             {
                 var mask1 = (2 << (int)Math.Floor(Math.Log(length - 1) / Math.Log(2))) - 1;
+                #if NET7_0
+                var mask2 = (2 << 31 - Int32.LeadingZeroCount((length - 1) | 1)) - 1;
+                #else
                 var mask2 = (2 << 31 - Nanoid.Clz32((length - 1) | 1)) - 1;
+                #endif
                 Assert.Equal(mask1, mask2);
             }
         }

@@ -64,6 +64,10 @@ var random = Random(10);
 var id = Nanoid.Generate(random, "abcdef", 10) //=> "fbaefaadeb"
 ```
 
+### Collision calculator
+
+You can use the [nanoid collision calculator](https://zelark.github.io/nano-id-cc/) to compute the collision probability given custom alphabets and id sizes.
+
 ## Credits
 
 - [ai](https://github.com/ai) - [nanoid](https://github.com/ai/nanoid)
