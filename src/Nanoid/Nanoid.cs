@@ -14,6 +14,7 @@ namespace NanoidDotNet
         /// <summary>
         /// Useful alphabets for Nanoid generation.
         /// Taken from https://github.com/CyberAP/nanoid-dictionary
+        /// and https://github.com/SasLuca/zig-nanoid/blob/91e0a9a8890984f3dcdd98c99002a05a83d0ee89/src/nanoid.zig#L4.
         /// </summary>
         public static class Alphabets
         {
@@ -74,7 +75,7 @@ namespace NanoidDotNet
             }
 
             /// <summary>
-            /// All digits.
+            /// All digits [0, 9].
             /// </summary>
             public const string Digits = "0123456789";
 
@@ -275,9 +276,7 @@ namespace NanoidDotNet
                     var alphabetIndex = bytes[i] & mask;
 
                     if (alphabetIndex >= alphabet.Length) continue;
-
                     idBuilder[cnt] = alphabet[alphabetIndex];
-
                     if (++cnt == size)
                     {
                         return new string(idBuilder);
@@ -289,7 +288,8 @@ namespace NanoidDotNet
 
         }
 
-        #if !NET7_0 // On dotnet7 and above we use `Int32.LeadingZeroCount` instead of this.
+        // On dotnet7 and above we use `Int32.LeadingZeroCount` instead of this.
+        #if !NET7_0
         /// <summary>
         /// Counts leading zeros of <paramref name="x"/>.
         /// </summary>
