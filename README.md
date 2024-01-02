@@ -47,7 +47,8 @@ If you want to change the ID's alphabet or length
 you can pass alphabet and size.
 
 ```cs
-var id = Nanoid.Generate("1234567890abcdef", 10); //=> "4f90d13a42"
+var id1 = Nanoid.Generate(Nanoid.Alphabets.LowercaseLettersAndDigits, 10); //=> "4f90d13a42"
+var id2 = Nanoid.Generate("1234567890abcdef", 5); //=> "2x501"
 ```
 
 You can find a variety of useful alphabets typically used for
@@ -71,7 +72,7 @@ For instance, to use a seed-based generator you can do this:
 
 ```cs
 var random = Random(10);
-var id = Nanoid.Generate(random, "abcdef", 10) //=> "fbaefaadeb"
+var id = Nanoid.Generate(random, Nanoid.Alphabets.Letters, 10) //=> "fbAeFaaDeb"
 ```
 
 If you want to use your own **global** random number generator, make sure you are aware of the
