@@ -143,9 +143,18 @@ namespace NanoidDotNet
         public const int DefaultIdSize = 21;
 
         /// <summary>
+        /// Backing field for <see cref="Nanoid.GlobalRandom"/>.
+        /// </summary>
+        [ThreadStatic]
+        private static CryptoRandom _globalRandom;
+
+        /// <summary>
         /// Global <see cref="CryptoRandom"/> instance used to conveniently generate Nanoids.
         /// </summary>
-        private static readonly CryptoRandom GlobalRandom = new CryptoRandom();
+        /// <remarks>
+        /// Lazily initialized in order to account for the ThreadStatic attribute (learn more here: https://stackoverflow.com/a/18086509)
+        /// </remarks>
+        public static CryptoRandom GlobalRandom => _globalRandom ?? (_globalRandom = new CryptoRandom());
 
         /// <summary>
         /// Generate a Nanoid using a global instance of <see cref="NanoidDotNet.CryptoRandom"/>.
