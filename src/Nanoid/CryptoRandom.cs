@@ -1,16 +1,20 @@
 using System;
 using System.Security.Cryptography;
+
 namespace NanoidDotNet
 {
     /// <inheritdoc />
     /// <summary>
+    /// Implementation of <see cref="System.Random"></see> using <see cref="System.Security.Cryptography.RandomNumberGenerator"></see>.
     /// </summary>
     public class CryptoRandom : Random
     {
-        private static RandomNumberGenerator _r;
-#if !NETSTANDARD2_1
+        private readonly RandomNumberGenerator _r;
+
+        #if !NETSTANDARD2_1
         private readonly byte[] _uint32Buffer = new byte[4];
-#endif
+        #endif
+
         /// <inheritdoc />
         /// <summary>
         /// </summary>
@@ -20,7 +24,7 @@ namespace NanoidDotNet
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="buffer"></param>
         /// <exception cref="ArgumentNullException"></exception>
@@ -30,13 +34,13 @@ namespace NanoidDotNet
             _r.GetBytes(buffer);
         }
 
-#if NETSTANDARD2_1
+        #if NETSTANDARD2_1
         /// <inheritdoc/>
         public override void NextBytes(Span<byte> buffer)
         {
             RandomNumberGenerator.Fill(buffer);
         }
-#endif
+        #endif
 
         /// <inheritdoc />
         /// <summary>
@@ -44,15 +48,16 @@ namespace NanoidDotNet
         /// <returns></returns>
         public override double NextDouble()
         {
-#if NETSTANDARD2_1
+            #if NETSTANDARD2_1
             Span<byte> uint32Buffer = stackalloc byte[4];
             RandomNumberGenerator.Fill(uint32Buffer);
             return BitConverter.ToUInt32(uint32Buffer) / (1.0 + UInt32.MaxValue);
-#else
+            #else
             _r.GetBytes(_uint32Buffer);
             return BitConverter.ToUInt32(_uint32Buffer, 0) / (1.0 + UInt32.MaxValue);
-#endif
+            #endif
         }
+
         /// <inheritdoc />
         /// <summary>
         /// </summary>
@@ -67,6 +72,7 @@ namespace NanoidDotNet
             var range = (long)maxValue - minValue;
             return (int)((long)Math.Floor(NextDouble() * range) + minValue);
         }
+
         /// <inheritdoc />
         /// <summary>
         /// </summary>
@@ -75,6 +81,7 @@ namespace NanoidDotNet
         {
             return Next(0, int.MaxValue);
         }
+
         /// <inheritdoc />
         /// <summary>
         /// </summary>
