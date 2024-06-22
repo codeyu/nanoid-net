@@ -30,7 +30,7 @@
     <PackageReleaseNotes>
       3.1.0
       - Various improvements and fixes. by @SasLuca, @Petteroe
-      - Target .NET Framework 4.8 and .NET 8.netstandard2.x no longer being available. by @oddeirik
+      - Target .NET Framework 4.8 and .NET 8. netcoreapp2.0 no longer being available. by @oddeirik
     </PackageReleaseNotes>
     <PackageLicense>https://github.com/codeyu/nanoid-net/master/LICENSE</PackageLicense>
     <PackageProjectUrl>https://github.com/codeyu/nanoid-net</PackageProjectUrl>
