@@ -66,7 +66,7 @@ namespace NanoidDotNet
                 /// All letters that don't look similar to other digits or letters
                 /// and prevent potential obscene words from appearing in generated ids.
                 /// </summary>
-                public const string NoLookAlikeSafeLetters = NoLookAlikeLettersUppercase + NoLookAlikeLettersLowercase;
+                public const string NoLookAlikeSafeLetters = NoLookAlikeSafeLettersUppercase + NoLookAlikeSafeLettersLowercase;
 
                 /// <summary>
                 /// URL safe symbols that can be used in a Nanoid. Part of the default alphabet.
