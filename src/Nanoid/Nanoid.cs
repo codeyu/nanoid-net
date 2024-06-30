@@ -135,6 +135,11 @@ namespace NanoidDotNet
             /// The default alphabet used by Nanoid. Includes ascii digits, letters and the symbols '_' and '-'.
             /// </summary>
             public const string Default = SubAlphabets.Symbols + LettersAndDigits;
+
+            /// <summary>
+            /// English alphabet letters and digits without lookalikes: l, I, 0, O.
+            /// </summary>
+            public const string Base58 = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
         }
 
         /// <summary>
