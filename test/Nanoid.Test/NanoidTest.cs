@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
-using System.Linq;
 
 namespace NanoidDotNet.Test
 {
@@ -136,7 +136,7 @@ namespace NanoidDotNet.Test
             for (var length = 1; length < 256; length++)
             {
                 var mask1 = (2 << (int)Math.Floor(Math.Log(length - 1) / Math.Log(2))) - 1;
-                #if NET7_0
+                #if NET7_0_OR_GREATER
                 var mask2 = (2 << 31 - Int32.LeadingZeroCount((length - 1) | 1)) - 1;
                 #else
                 var mask2 = (2 << 31 - Nanoid.Clz32((length - 1) | 1)) - 1;
