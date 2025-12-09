@@ -251,7 +251,7 @@ namespace NanoidDotNet
             // mistake security-wise.
 
             // Use `Int32.LeadingZeroCount` on .net7 and above
-            #if NET7_0
+            #if NET7_0_OR_GREATER
             var mask = (2 << 31 - Int32.LeadingZeroCount(alphabet.Length - 1 | 1)) - 1;
             #else
             var mask = (2 << 31 - Clz32((alphabet.Length - 1) | 1)) - 1;
@@ -298,7 +298,7 @@ namespace NanoidDotNet
         }
 
         // On dotnet7 and above we use `Int32.LeadingZeroCount` instead of this.
-        #if !NET7_0
+        #if !NET7_0_OR_GREATER
         /// <summary>
         /// Counts leading zeros of <paramref name="x"/>.
         /// </summary>
