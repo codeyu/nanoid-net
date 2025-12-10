@@ -4,6 +4,9 @@ pull_requests:
 image: Visual Studio 2022
 nuget:
   disable_publish_on_pr: true
+install:
+- ps: Invoke-WebRequest -Uri https://dot.net/v1/dotnet-install.ps1 -OutFile dotnet-install.ps1
+- ps: .\dotnet-install.ps1 -Channel 10.0 -InstallDir $env:ProgramFiles\dotnet
 build_script:
 - dotnet build nanoid-net.sln -c Release -v q /nologo
 - dotnet pack src/Nanoid/Nanoid.csproj -c Release -o .\artifacts --include-symbols --no-build
